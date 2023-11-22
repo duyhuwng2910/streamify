@@ -1,5 +1,5 @@
 {{ config(
-      materialized = 'view',
+      materialized = 'table',
       partition_by={
         "field": "ts",
         "data_type": "timestamp",
