@@ -1,5 +1,5 @@
 {{ config(
-      materialized = 'table',
+      materialized = 'view',
       partition_by={
         "field": "ts",
         "data_type": "timestamp",
@@ -40,13 +40,13 @@ SELECT
     dim_artists.name AS artistName
 FROM
     {{ ref('fact_streams') }}
-JOIN
+INNER JOIN
     {{ ref('dim_users') }} ON fact_streams.userKey = dim_users.userKey
-JOIN
+INNER JOIN
     {{ ref('dim_songs') }} ON fact_streams.songKey = dim_songs.songKey
-JOIN
+INNER JOIN
     {{ ref('dim_location') }} ON fact_streams.locationKey = dim_location.locationKey
-JOIN
+INNER JOIN
     {{ ref('dim_datetime') }} ON fact_streams.dateKey = dim_datetime.dateKey
-JOIN
+INNER JOIN
     {{ ref('dim_artists') }} ON fact_streams.artistKey = dim_artists.artistKey
