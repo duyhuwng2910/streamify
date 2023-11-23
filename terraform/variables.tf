@@ -1,5 +1,5 @@
 variable "project" {
-  description = "int3507-5-assignment"
+  description = "int3507-5"
   type        = string
 }
 
