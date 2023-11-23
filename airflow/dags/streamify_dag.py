@@ -48,7 +48,7 @@ with DAG(
     tags=['streamify']
 ) as dag:
     
-    initate_dbt_task = BashOperator(
+    initiate_dbt_task = BashOperator(
         task_id = 'dbt_initiate',
         bash_command = 'cd /dbt && dbt deps && dbt seed --select state_codes --profiles-dir . --target prod'
     )
@@ -94,5 +94,5 @@ with DAG(
         create_empty_table_task >> \
         execute_insert_query_task >> \
         delete_external_table_task >> \
-        initate_dbt_task >> \
+        initiate_dbt_task >> \
         execute_dbt_task
