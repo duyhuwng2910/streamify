@@ -10,24 +10,24 @@ int3507-5-assignment
 ssh-keygen -t rsa -f ~/.ssh/gcp -C nguyenduyhung -b 2048
 
 Host streamify-kafka
-    HostName 35.238.217.203
+    HostName 
     User nguyenduyhung
     IdentityFile c:/Users/Admin/.ssh/gcp
 
 Host streamify-spark
-    HostName 35.188.55.127
+    HostName 
     User nguyenduyhung
     IdentityFile c:/Users/Admin/.ssh/gcp
 
 Host streamify-airflow
-    HostName 34.68.251.248
+    HostName 
     User nguyenduyhung
     IdentityFile c:/Users/Admin/.ssh/gcp
 
 ### Setup Kafka VM
 ssh streamify-kafka
 
-export KAFKA_ADDRESS=35.238.217.203
+export KAFKA_ADDRESS=
 
 cd ~/streamify/kafka && \
 docker-compose build && \
@@ -44,7 +44,7 @@ ssh streamify-spark
 
 cd streamify/spark_streaming
 
-export KAFKA_ADDRESS=35.238.217.203
+export KAFKA_ADDRESS=
 export GCP_GCS_BUCKET=int3507-5-assignment
 
 spark-submit \
