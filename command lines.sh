@@ -4,7 +4,7 @@ export GOOGLE_APPLICATION_CREDENTIALS="W:/google_credentials.json"
 
 gcloud auth activate-service-account --key-file $GOOGLE_APPLICATION_CREDENTIALS
 
-int3507-5-assignment
+int3507-5
 
 ### Create ssh key
 ssh-keygen -t rsa -f ~/.ssh/gcp -C nguyenduyhung -b 2048
@@ -66,6 +66,7 @@ export KAFKA_ADDRESS=35.193.229.176
 export GCP_GCS_BUCKET=int3507-5
 
 ## Start reading messages
+cd streamify/spark_streaming
 spark-submit \
 --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2 \
 stream_all_events.py

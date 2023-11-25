@@ -1,5 +1,5 @@
 {{ config(
-      materialized = 'view',
+      materialized = 'table',
       partition_by={
         "field": "ts",
         "data_type": "timestamp",
@@ -8,36 +8,41 @@
   ) }}
 
 SELECT
-    fact_streams.userKey AS userKey,
-    fact_streams.artistKey AS artistKey,
-    fact_streams.songKey AS songKey ,
-    fact_streams.dateKey AS dateKey,
-    fact_streams.locationKey AS locationKey,
+    fact_streams.userKey,
+    fact_streams.artistKey,
+    fact_streams.songKey,
+    fact_streams.dateKey,
+    fact_streams.locationKey,
     fact_streams.ts AS timestamp,
 
-    dim_users.firstName AS firstName,
-    dim_users.lastName AS lastName,
-    dim_users.gender AS gender,
-    dim_users.level AS level,
-    dim_users.userId as userId,
-    dim_users.currentRow as currentUserRow,
+    dim_users.gender,
+    dim_users.level,
+    dim_users.userId,
+    dim_users.currentRow,
 
+    dim_songs.year AS releaseYear,
     dim_songs.duration AS songDuration,
-    dim_songs.tempo AS tempo,
-    dim_songs.title AS songName,
+    dim_songs.tempo,
+    dim_songs.title,
 
-    dim_location.city AS city,
-    dim_location.stateName AS state,
+    dim_location.city,
+    dim_location.stateCode,
+    dim_location.stateName,
     dim_location.latitude AS latitude,
     dim_location.longitude AS longitude,
 
-    dim_datetime.date AS dateHour,
-    dim_datetime.dayOfMonth AS dayOfMonth,
-    dim_datetime.dayOfWeek AS dayOfWeek,
+    dim_datetime.date,
+    dim_datetime.dayOfWeek,
+    dim_datetime.dayOfMonth,
+    dim_datetime.weekOfYear,
+    dim_datetime.month,
+    dim_datetime.year,
+    dim_datetime.weekendFlag,
     
     dim_artists.latitude AS artistLatitude,
     dim_artists.longitude AS artistLongitude,
     dim_artists.name AS artistName
+    dim_artists.location as artistLocation
 FROM
     {{ ref('fact_streams') }}
 INNER JOIN
