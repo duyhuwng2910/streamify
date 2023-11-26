@@ -50,7 +50,7 @@ We will setup airflow on docker in a dedicated compute instance. dbt is setup in
 - Airflow will be running in detached mode. To see the logs from docker run the below command
 
   ```bash
-  docker-compose --follow
+  docker-compose logs --follow
   ```
 
 - To stop airflow
