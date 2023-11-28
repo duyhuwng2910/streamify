@@ -62,11 +62,11 @@ git clone https://github.com/duyhuwng2910/streamify.git && \
 cd streamify/spark_streaming
 
 ## Set the environment variables
+cd streamify/spark_streaming
 export KAFKA_ADDRESS=35.193.229.176
 export GCP_GCS_BUCKET=int3507-5
 
 ## Start reading messages
-cd streamify/spark_streaming
 spark-submit \
 --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2 \
 stream_all_events.py
